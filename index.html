@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-form {
+            width: 350px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4a6cf7;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #message {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-form">
+
+        <h1>Авторизация</h1>
+
+        <input type="text" id="login" placeholder="Введите логин">
+
+        <input type="password" id="password" placeholder="Введите пароль">
+
+        <button onclick="authorization()">Войти</button>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script>
+        const users = [
+            {
+                login: "ulya",
+                password: "6767",
+                name: "Ulzana"
+            },
+            {
+                login: "zika",
+                password: "5252",
+                name: "Ziyoda"
+            },
+            {
+                login: "OGBUDA",
+                password: "7272",
+                name: "Grisha"
+            },
+            {
+                login: "ww",
+                password: "2222",
+                name: "ulzana"
+            },
+            {
+                login: "wwww",
+                password: "3333",
+                name: "dblu"
+            }
+        ];
+
+        function authorization() {
+
+            const login = document.getElementById("login").value;
+            const password = document.getElementById("password").value;
+
+            const user = users.find(function(user) {
+                return user.login === login && user.password === password;
+            });
+
+            const message = document.getElementById("message");
+
+            if (user) {
+                message.textContent = `Добро пожаловать, ${user.name}!`;
+                message.style.color = "green";
+            } else {
+                message.textContent = "Ошибка! Неверный логин или пароль.";
+                message.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>
